@@ -1,0 +1,34 @@
+<div *ngIf="user">
+    <h2>{{user.nombre}}</h2>
+    <div>
+        Nombre:
+        <input [(ngModel)]="user.nombre" placeholder="Nombre" />
+    </div>
+    <div>
+        Apellido:
+        <input [(ngModel)]="user.apellido" placeholder="Apellido" />
+    </div>
+    <div>
+        Correo Electronico:
+        <input [(ngModel)]="user.correoElectronico" placeholder="correoElectronico" />
+    </div>
+    <div>
+        Fecha de Nacimiento:
+        <input  [(ngModel)]="user.fechaDeNacimiento" placeholder="Fecha de Nacimiento" type="date"/>
+    </div>
+    <div>
+        Telefono:
+        <input [(ngModel)]="user.telefono" placeholder="Telefono" />
+    </div>
+    <div>
+        Pais De Residencia:
+        <input [(ngModel)]="user.paisDeResidencia" placeholder="Pais De Residencia" />
+    </div>
+    <div>
+        Desea Recibir Informacion:
+        <input  [(ngModel)]="user.deseaRecibirInformacion" type="checkbox" />
+    </div>
+    <button (click)="updateUser(user)" *ngIf="user.id">Save</button>
+    <button (click)="deleteUser(user)" *ngIf="user.id">Delete</button>
+    <button (click)="createUser(user)" *ngIf="!user.id">Create</button>
+</div>
