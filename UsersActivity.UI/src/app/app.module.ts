@@ -5,17 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
+import { EditActivityComponent } from './components/edit-activity/edit-activity.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditActivityComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path: 'edit-activity', component: EditActivityComponent},
+      {path: 'edit-user', component: EditUserComponent},
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

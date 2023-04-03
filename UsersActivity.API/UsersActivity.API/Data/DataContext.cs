@@ -9,5 +9,8 @@ namespace UsersActivity.API.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<User> Users => Set<User>();
+
+        public DbSet<Activity> Activities => Set<Activity>();
+
     }
 }
