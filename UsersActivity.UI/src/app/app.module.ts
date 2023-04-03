@@ -7,12 +7,14 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FormsModule } from '@angular/forms';
 import { EditActivityComponent } from './components/edit-activity/edit-activity.component';
 import { RouterModule } from '@angular/router';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditUserComponent,
-    EditActivityComponent
+    EditActivityComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     RouterModule.forRoot([
       {path: 'edit-activity', component: EditActivityComponent},
-      {path: 'edit-user', component: EditUserComponent},
+      {path: 'edit-user', component: UserListComponent},
     ]),
   ],
   providers: [],

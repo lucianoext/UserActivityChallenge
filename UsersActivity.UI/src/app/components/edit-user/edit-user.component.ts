@@ -10,10 +10,12 @@ import { UserService } from 'src/app/services/user.service';
 export class EditUserComponent implements OnInit {
   @Input() user?: User;
   @Output() usersUpdated = new EventEmitter<User[]>();
+  users: User[] = [];
+  userToEdit?: User;
 
   constructor(private userService: UserService) {}
 
-  ngOnInit(): void {
+  ngOnInit() : void {
   }
 
   updateUser(user:User){

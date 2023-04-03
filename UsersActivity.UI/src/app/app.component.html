@@ -1,29 +1,5 @@
-<router-outlet></router-outlet>
 <nav>
   <a class="button" routerLink="/edit-activity">Activities</a> |
-  <a class="button" routerLink="/edit-User">Users</a>
+  <a class="button" routerLink="/edit-user">Users</a>
 </nav>
-
-<button (click)="initNewUser()">Create New User</button>
-
-<table>
-  <thead>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Correo Electronico</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{user.nombre}}</td>
-      <td>{{user.apellido}}</td>
-      <td>{{user.correoElectronico}}</td>
-      <td>{{user.fechaDeNacimiento}}</td>
-      <td>{{user.telefono}}</td>
-      <td>{{user.paisDeResidencia}}</td>
-      <td>{{user.deseaRecibirInformacion}}</td>
-      <td><button (click)="editUser(user)">Editar</button></td>
-    </tr>
-  </tbody>
-</table>
-
-<app-edit-user [user]="userToEdit" (usersUpdated)="updateUserList($event)"></app-edit-user>
+<router-outlet></router-outlet>
