@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [UserActivityDB]    Script Date: 3/4/2023 08:26:45 ******/
+/****** Object:  Database [UserActivityDB]    Script Date: 4/4/2023 08:46:01 ******/
 CREATE DATABASE [UserActivityDB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,27 +82,21 @@ ALTER DATABASE [UserActivityDB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CL
 GO
 USE [UserActivityDB]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 3/4/2023 08:26:45 ******/
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 4/4/2023 08:46:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Users](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nombre] [nvarchar](max) NOT NULL,
-	[Apellido] [nvarchar](max) NOT NULL,
-	[CorreoElectronico] [nvarchar](max) NOT NULL,
-	[FechaDeNacimiento] [datetime2](7) NOT NULL,
-	[Telefono] [int] NOT NULL,
-	[PaisDeResidencia] [nvarchar](max) NOT NULL,
-	[DeseaRecibirInformacion] [bit] NOT NULL,
- CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
 (
-	[Id] ASC
+	[MigrationId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Activities]    Script Date: 3/4/2023 08:26:45 ******/
+/****** Object:  Table [dbo].[Activities]    Script Date: 4/4/2023 08:46:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -118,30 +112,26 @@ CREATE TABLE [dbo].[Activities](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[vw_usert_activities]    Script Date: 3/4/2023 08:26:45 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/4/2023 08:46:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE VIEW [dbo].[vw_usert_activities] AS
-SELECT a.Create_date 'Fecha_de_Actividad', CONCAT(u.Nombre,' ',u.Apellido) 'Nombre_Completo', a.Actividad 'Detalle_de_Actividad'
-FROM dbo.Users u
-JOIN dbo.Activities a
-on u.Id = a.Id_usuario
-GO
-/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 3/4/2023 08:26:45 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[__EFMigrationsHistory](
-	[MigrationId] [nvarchar](150) NOT NULL,
-	[ProductVersion] [nvarchar](32) NOT NULL,
- CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[Users](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](max) NOT NULL,
+	[Apellido] [nvarchar](max) NOT NULL,
+	[CorreoElectronico] [nvarchar](max) NOT NULL,
+	[FechaDeNacimiento] [datetime2](7) NOT NULL,
+	[Telefono] [int] NOT NULL,
+	[PaisDeResidencia] [nvarchar](max) NOT NULL,
+	[DeseaRecibirInformacion] [bit] NOT NULL,
+	[Activo] [bit] NOT NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
-	[MigrationId] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 USE [master]
 GO
