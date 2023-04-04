@@ -12,8 +12,8 @@ using UsersActivity.API.Data;
 namespace UsersActivity.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230331014719_Initial")]
-    partial class Initial
+    [Migration("20230404034608_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,29 @@ namespace UsersActivity.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("UsersActivity.API.Activity", b =>
+                {
+                    b.Property<int>("Id_actividad")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_actividad"));
+
+                    b.Property<string>("Actividad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Create_date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id_usuario")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id_actividad");
+
+                    b.ToTable("Activities");
+                });
+
             modelBuilder.Entity("UsersActivity.API.User", b =>
                 {
                     b.Property<int>("Id")
@@ -32,6 +55,9 @@ namespace UsersActivity.API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Apellido")
                         .IsRequired()

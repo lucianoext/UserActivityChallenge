@@ -7,4 +7,5 @@ export class User{
     telefono = "";
     paisDeResidencia = "";
     deseaRecibirInformacion = "";
+    activo? : boolean;
 }

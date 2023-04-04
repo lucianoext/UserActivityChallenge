@@ -1,13 +1,13 @@
 <table>
     <thead>
       <th>Fecha Actividad</th>
-      <th>Id Usuario</th>
+      <th>Nombre Apellido</th>
       <th>Detalle Actividad</th>
     </thead>
     <tbody>
       <tr *ngFor="let activity of activities">
-        <td>{{activity.create_date}}</td>
-        <td>{{activity.id_usuario}}</td>
+        <td>{{activity.createDate}}</td>
+        <td>{{activity.nombreApellidoUsuario}}</td>
         <td>{{activity.actividad}}</td>
       </tr>
     </tbody>

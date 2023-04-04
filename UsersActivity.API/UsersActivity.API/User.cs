@@ -13,8 +13,6 @@ namespace UsersActivity.API
         public int Telefono { get; set; } 
         public string PaisDeResidencia { get; set; } = string.Empty;
         public bool DeseaRecibirInformacion { get; set; }
-
-
-
+        public bool Activo { get; set; } = true;
     }
 }

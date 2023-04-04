@@ -16,19 +16,4 @@ export class ActivityService {
   {
     return this.http.get<Activity[]>(`${environment.apiUrl}/${this.url}`)
   }
-
-  public updateActivity(activity: Activity) : Observable<Activity[]> 
-  {
-    return this.http.put<Activity[]>(`${environment.apiUrl}/${this.url}`,activity)
-  }
-
-  public createActivity(activity: Activity) : Observable<Activity[]> 
-  {
-    return this.http.post<Activity[]>(`${environment.apiUrl}/${this.url}`,activity)
-  }
-
-  public deleteActivity(activity: Activity) : Observable<Activity[]> 
-  {
-    return this.http.delete<Activity[]>(`${environment.apiUrl}/${this.url}/${activity.id_actividad}`)
-  }
 }

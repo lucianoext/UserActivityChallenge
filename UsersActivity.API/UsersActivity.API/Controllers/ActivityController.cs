@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
 using UsersActivity.API;
 using UsersActivity.API.Data;
 
@@ -21,7 +22,22 @@ namespace ActivitysActivity.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Activity>>> GetActivitys()
         {
-            return Ok(await _context.Activities.ToListAsync());
+            var activities = await _context.Activities.ToListAsync();
+            var users = await _context.Users.ToListAsync();
+
+            var query =
+                from activity in activities
+                join user in users on activity.Id_usuario equals user.Id
+                where user.Activo = true
+                select new
+                {
+                    createDate = activity.Create_date,
+                    nombreApellidoUsuario = user.Nombre + " " + user.Apellido,
+                    actividad = activity.Actividad,
+                };
+
+
+            return Ok(query.ToList());
         }
         [HttpPost]
         public async Task<ActionResult<List<Activity>>> CreateActivity(Activity activity)
